@@ -11,8 +11,10 @@ FIND_PATH(ZLIB_INCLUDE_DIR zlib.h
         ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/include
         )
 if (WIN32)
+    SET(ZLIB_INCLUDE_DIR ${ZLIB_INCLUDE_DIR}/win)
+    message(STATUS ${ZLIB_INCLUDE_DIR})
     FIND_LIBRARY(ZLIB_LIBRARIES zlibstatic.lib
-            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/win_x64
+            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/win_x64/release
             )
 elseif (ANDROID)
     FIND_LIBRARY(ZLIB_LIBRARIES libz.a

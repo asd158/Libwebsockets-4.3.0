@@ -84,21 +84,9 @@ include_directories(wrapper/include wrapper/include/internal)
 	endif()
 
 	if (_WANT_MBT)
-
-		find_path(LWS_MBEDTLS_INCLUDE_DIRS mbedtls/ssl.h)
-
-		find_library(MBEDTLS_LIBRARY mbedtls)
-		find_library(MBEDX509_LIBRARY mbedx509)
-		find_library(MBEDCRYPTO_LIBRARY mbedcrypto)
-
+		find_package(MBEDTLS)
+		set(LWS_MBEDTLS_INCLUDE_DIRS ${MBEDTLS_INCLUDE_DIRS})
 		set(LWS_MBEDTLS_LIBRARIES "${MBEDTLS_LIBRARY}" "${MBEDX509_LIBRARY}" "${MBEDCRYPTO_LIBRARY}")
-
-		include(FindPackageHandleStandardArgs)
-		find_package_handle_standard_args(MBEDTLS DEFAULT_MSG
-			LWS_MBEDTLS_INCLUDE_DIRS MBEDTLS_LIBRARY MBEDX509_LIBRARY MBEDCRYPTO_LIBRARY)
-
-		mark_as_advanced(LWS_MBEDTLS_INCLUDE_DIRS MBEDTLS_LIBRARY MBEDX509_LIBRARY MBEDCRYPTO_LIBRARY)
-
 		if ("${LWS_MBEDTLS_LIBRARIES}" STREQUAL "" OR "${LWS_MBEDTLS_INCLUDE_DIRS}" STREQUAL "")
 			message(FATAL_ERROR "You must set LWS_MBEDTLS_LIBRARIES and LWS_MBEDTLS_INCLUDE_DIRS when LWS_WITH_MBEDTLS is turned on.")
 		endif()

@@ -49,9 +49,6 @@ endif()
 #   debug builds include source level debug info and extra logging
 
 set(LWS_WITH_BUNDLED_ZLIB_DEFAULT OFF)
-if(WIN32)
-	set(LWS_WITH_BUNDLED_ZLIB_DEFAULT ON)
-endif()
 
 set(LWS_ROLE_RAW 1)
 set(LWS_WITH_POLL 1)
@@ -248,7 +245,7 @@ option(LWS_WITHOUT_EXTENSIONS "Don't compile with extensions" OFF)
 #
 option(LWS_WITHOUT_BUILTIN_GETIFADDRS "Don't use the BSD getifaddrs implementation from libwebsockets if it is missing (this will result in a compilation error) ... The default is to assume that your libc provides it. On some systems such as uclibc it doesn't exist." OFF)
 option(LWS_FALLBACK_GETHOSTBYNAME "Also try to do dns resolution using gethostbyname if getaddrinfo fails" OFF)
-option(LWS_WITHOUT_BUILTIN_SHA1 "Don't build the lws sha-1 (eg, because openssl will provide it" ON)
+option(LWS_WITHOUT_BUILTIN_SHA1 "Don't build the lws sha-1 (eg, because openssl will provide it" OFF)
 option(LWS_WITHOUT_DAEMONIZE "Don't build the daemonization api" ON)
 option(LWS_SSL_SERVER_WITH_ECDH_CERT "Include SSL server use ECDH certificate" OFF)
 option(LWS_WITH_LEJP "With the Lightweight JSON Parser" ON)
