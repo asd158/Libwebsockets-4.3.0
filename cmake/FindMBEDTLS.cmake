@@ -22,34 +22,34 @@ if (WIN32)
             ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/win_x64/release
             )
 elseif (ANDROID)
-    find_library(MBEDTLS_LIBRARY libmbedtls.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/android/${ANDROID_ABI}
+    find_library(MBEDTLS_LIBRARY mbedtls
+            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/android/${ANDROID_ABI}
             )
     find_library(MBEDX509_LIBRARY libmbedx509.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/android/${ANDROID_ABI}
+            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/android/${ANDROID_ABI}
             )
     find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/android/${ANDROID_ABI}
+            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/android/${ANDROID_ABI}
             )
 elseif (APPLE)
     find_library(MBEDTLS_LIBRARY libmbedtls.a
-            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/ios
+            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios
             )
     find_library(MBEDX509_LIBRARY libmbedx509.a
-            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/ios
+            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios
             )
     find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/ios
+            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios
             )
 else ()
     find_library(MBEDTLS_LIBRARY libmbedtls.a
-            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/ubt22_x64
+            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ubt22_x64
             )
     find_library(MBEDX509_LIBRARY libmbedx509.a
-            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/ubt22_x64
+            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ubt22_x64
             )
     find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/ubt22_x64
+            {CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ubt22_x64
             )
 endif ()
 MARK_AS_ADVANCED(

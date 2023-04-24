@@ -23,6 +23,9 @@
 #
 
 cmake_minimum_required(VERSION 2.8.12)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE BOTH)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(CheckIncludeFile)
