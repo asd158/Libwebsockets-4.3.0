@@ -64,3 +64,5 @@ doc
 /destdir/
 /bb1/
 /bb3/
+/cmake-build-*
+/.idea

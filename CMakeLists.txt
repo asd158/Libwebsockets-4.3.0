@@ -67,7 +67,7 @@ project(libwebsockets C)
 if (LWS_WITH_SECURE_STREAMS_CPP)
 	enable_language(CXX)
 endif()
-include(CTest)
+#include(CTest)
 
 if (ESP_PLATFORM)
        include_directories(
@@ -123,7 +123,7 @@ option(LWS_ROLE_RAW_FILE "Compile with support for raw files" ON)
 option(LWS_WITH_HTTP2 "Compile with server support for HTTP/2" ON)
 option(LWS_WITH_LWSWS "Libwebsockets Webserver" OFF)
 option(LWS_WITH_CGI "Include CGI (spawn process with network-connected stdin/out/err) APIs" OFF)
-option(LWS_IPV6 "Compile with support for ipv6" OFF)
+option(LWS_IPV6 "Compile with support for ipv6" ON)
 option(LWS_UNIX_SOCK "Compile with support for UNIX domain socket if OS supports it" ON)
 option(LWS_WITH_PLUGINS "Support plugins for protocols and extensions (implies LWS_WITH_PLUGINS_API)" OFF)
 option(LWS_WITH_PLUGINS_BUILTIN "Build the plugin protocols directly into lws library" OFF)
@@ -134,7 +134,7 @@ option(LWS_WITH_PEER_LIMITS "Track peers and restrict resources a single peer ca
 option(LWS_WITH_ACCESS_LOG "Support generating Apache-compatible access logs" OFF)
 option(LWS_WITH_RANGES "Support http ranges (RFC7233)" OFF)
 option(LWS_WITH_THREADPOOL "Managed worker thread pool support (relies on pthreads)" OFF)
-option(LWS_WITH_HTTP_STREAM_COMPRESSION "Support HTTP stream compression" OFF)
+option(LWS_WITH_HTTP_STREAM_COMPRESSION "Support HTTP stream compression" ON)
 option(LWS_WITH_HTTP_BROTLI "Also offer brotli http stream compression (requires LWS_WITH_HTTP_STREAM_COMPRESSION)" OFF)
 option(LWS_WITH_ACME "Enable support for ACME automatic cert acquisition + maintenance (letsencrypt etc)" OFF)
 option(LWS_WITH_HUBBUB "Enable libhubbub rewriting support" OFF)
@@ -154,14 +154,14 @@ option(LWS_WITH_SYS_METRICS "Lws Metrics API" OFF)
 #
 # Secure Streams
 #
-option(LWS_WITH_SECURE_STREAMS "Secure Streams protocol-agnostic API" OFF)
-option(LWS_WITH_SECURE_STREAMS_CPP "Secure Streams C++ classes" OFF)
-option(LWS_WITH_SECURE_STREAMS_PROXY_API "Secure Streams support to work across processes" OFF)
-option(LWS_WITH_SECURE_STREAMS_SYS_AUTH_API_AMAZON_COM "Auth support for api.amazon.com" OFF)
+option(LWS_WITH_SECURE_STREAMS "Secure Streams protocol-agnostic API" ON)
+option(LWS_WITH_SECURE_STREAMS_CPP "Secure Streams C++ classes" ON)
+option(LWS_WITH_SECURE_STREAMS_PROXY_API "Secure Streams support to work across processes" ON)
+option(LWS_WITH_SECURE_STREAMS_SYS_AUTH_API_AMAZON_COM "Auth support for api.amazon.com" ON)
 option(LWS_WITH_SECURE_STREAMS_STATIC_POLICY_ONLY "Secure Streams Policy is hardcoded only" OFF)
-option(LWS_WITH_SECURE_STREAMS_AUTH_SIGV4 "Secure Streams Auth support for AWS Sigv4" OFF)
-option(LWS_WITH_SECURE_STREAMS_BUFFER_DUMP "Secure Streams protocol buffer dump" OFF)
-option(LWS_WITH_SS_DIRECT_PROTOCOL_STR "Secure Streams directly set/get metadata w/o policy" OFF)
+option(LWS_WITH_SECURE_STREAMS_AUTH_SIGV4 "Secure Streams Auth support for AWS Sigv4" ON)
+option(LWS_WITH_SECURE_STREAMS_BUFFER_DUMP "Secure Streams protocol buffer dump" ON)
+option(LWS_WITH_SS_DIRECT_PROTOCOL_STR "Secure Streams directly set/get metadata w/o policy" ON)
 
 #
 # CTest options
@@ -173,13 +173,13 @@ option(LWS_WITH_SS_DIRECT_PROTOCOL_STR "Secure Streams directly set/get metadata
 # have internet routing, then you can still run a subset of tests with CTest / make
 # test that only does local tests by disabling this option.
 #
-option(LWS_CTEST_INTERNET_AVAILABLE "CTest will performs tests that need the Internet" ON)
+option(LWS_CTEST_INTERNET_AVAILABLE "CTest will performs tests that need the Internet" OFF)
 
 #
 # TLS library options... all except mbedTLS are basically OpenSSL variants.
 #
 option(LWS_WITH_SSL "Include SSL support (defaults to OpenSSL or similar, mbedTLS if LWS_WITH_MBEDTLS is set)" ON)
-option(LWS_WITH_MBEDTLS "Use mbedTLS (>=2.0) replacement for OpenSSL. When setting this, you also may need to specify LWS_MBEDTLS_LIBRARIES and LWS_MBEDTLS_INCLUDE_DIRS" OFF)
+option(LWS_WITH_MBEDTLS "Use mbedTLS (>=2.0) replacement for OpenSSL. When setting this, you also may need to specify LWS_MBEDTLS_LIBRARIES and LWS_MBEDTLS_INCLUDE_DIRS" ON)
 option(LWS_WITH_BORINGSSL "Use BoringSSL replacement for OpenSSL" OFF)
 option(LWS_WITH_CYASSL "Use CyaSSL replacement for OpenSSL. When setting this, you also need to specify LWS_CYASSL_LIBRARIES and LWS_CYASSL_INCLUDE_DIRS" OFF)
 option(LWS_WITH_WOLFSSL "Use wolfSSL replacement for OpenSSL. When setting this, you also may need to specify LWS_WOLFSSL_LIBRARIES and LWS_WOLFSSL_INCLUDE_DIRS" OFF)
@@ -218,7 +218,7 @@ option(LWS_WITH_DRIVERS "With generic drivers for gpio, i2c, display etc" OFF)
 option(LWS_WITH_STATIC "Build the static version of the library" ON)
 option(LWS_WITH_SHARED "Build the shared version of the library" ON)
 option(LWS_LINK_TESTAPPS_DYNAMIC "Link the test apps to the shared version of the library. Default is to link statically" OFF)
-option(LWS_STATIC_PIC "Build the static version of the library with position-independent code" OFF)
+option(LWS_STATIC_PIC "Build the static version of the library with position-independent code" ON)
 option(LWS_SUPPRESS_DEPRECATED_API_WARNINGS "Turn off complaints about, eg, openssl 3 deprecated api usage" ON)
 
 #
@@ -227,28 +227,28 @@ option(LWS_SUPPRESS_DEPRECATED_API_WARNINGS "Turn off complaints about, eg, open
 option(LWS_WITH_ESP32 "Build for ESP32" OFF)
 option(LWS_PLAT_OPTEE "Build for OPTEE" OFF)
 option(LWS_PLAT_FREERTOS "Build for FreeRTOS" OFF)
-option(LWS_PLAT_ANDROID "Android flavour of unix platform" OFF)
+option(LWS_PLAT_ANDROID "Android flavour of unix platform" ON)
 
 #
 # Client / Server / Test Apps build control
 #
 option(LWS_WITHOUT_CLIENT "Don't build the client part of the library" OFF)
-option(LWS_WITHOUT_SERVER "Don't build the server part of the library" OFF)
-option(LWS_WITHOUT_TESTAPPS "Don't build the libwebsocket-test-apps" OFF)
-option(LWS_WITHOUT_TEST_SERVER "Don't build the test server" OFF)
-option(LWS_WITHOUT_TEST_SERVER_EXTPOLL "Don't build the test server version that uses external poll" OFF)
-option(LWS_WITHOUT_TEST_PING "Don't build the ping test application" OFF)
-option(LWS_WITHOUT_TEST_CLIENT "Don't build the client test application" OFF)
+option(LWS_WITHOUT_SERVER "Don't build the server part of the library" ON)
+option(LWS_WITHOUT_TESTAPPS "Don't build the libwebsocket-test-apps" ON)
+option(LWS_WITHOUT_TEST_SERVER "Don't build the test server" ON)
+option(LWS_WITHOUT_TEST_SERVER_EXTPOLL "Don't build the test server version that uses external poll" ON)
+option(LWS_WITHOUT_TEST_PING "Don't build the ping test application" ON)
+option(LWS_WITHOUT_TEST_CLIENT "Don't build the client test application" ON)
 #
 # Extensions (permessage-deflate)
 #
-option(LWS_WITHOUT_EXTENSIONS "Don't compile with extensions" ON)
+option(LWS_WITHOUT_EXTENSIONS "Don't compile with extensions" OFF)
 #
 # Helpers + misc
 #
 option(LWS_WITHOUT_BUILTIN_GETIFADDRS "Don't use the BSD getifaddrs implementation from libwebsockets if it is missing (this will result in a compilation error) ... The default is to assume that your libc provides it. On some systems such as uclibc it doesn't exist." OFF)
 option(LWS_FALLBACK_GETHOSTBYNAME "Also try to do dns resolution using gethostbyname if getaddrinfo fails" OFF)
-option(LWS_WITHOUT_BUILTIN_SHA1 "Don't build the lws sha-1 (eg, because openssl will provide it" OFF)
+option(LWS_WITHOUT_BUILTIN_SHA1 "Don't build the lws sha-1 (eg, because openssl will provide it" ON)
 option(LWS_WITHOUT_DAEMONIZE "Don't build the daemonization api" ON)
 option(LWS_SSL_SERVER_WITH_ECDH_CERT "Include SSL server use ECDH certificate" OFF)
 option(LWS_WITH_LEJP "With the Lightweight JSON Parser" ON)
@@ -285,7 +285,7 @@ option(LWS_WITH_CUSTOM_HEADERS "Store and allow querying custom HTTP headers (H1
 option(LWS_WITH_DISKCACHE "Hashed cache directory with lazy LRU deletion to size limit (unrelated to lws_cache_ttl)" OFF)
 option(LWS_WITH_ASAN "Build with gcc runtime sanitizer options enabled (needs libasan)" OFF)
 option(LWS_WITH_LEJP_CONF "With LEJP configuration parser as used by lwsws" OFF)
-option(LWS_WITH_ZLIB "Include zlib support (required for extensions)" OFF)
+option(LWS_WITH_ZLIB "Include zlib support (required for extensions)" ON)
 option(LWS_WITH_BUNDLED_ZLIB "Use bundled zlib version (Windows only)" ${LWS_WITH_BUNDLED_ZLIB_DEFAULT})
 option(LWS_WITH_MINIZ "Use miniz instead of zlib" OFF)
 option(LWS_WITH_SEQUENCER "lws_seq_t support" OFF)
