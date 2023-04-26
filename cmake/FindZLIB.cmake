@@ -17,14 +17,20 @@ if (WIN32)
             )
 elseif (ANDROID)
     FIND_LIBRARY(ZLIB_LIBRARIES libz.a
-            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/${ANDROID_ABI}
+            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/android/${ANDROID_ABI}
             )
 elseif (APPLE)
-    FIND_LIBRARY(ZLIB_LIBRARIES libz.a
-            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/ios
-            )
+    if (IOS)
+        FIND_LIBRARY(ZLIB_LIBRARIES libz.a
+                ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/ios
+                )
+    else ()
+        FIND_LIBRARY(ZLIB_LIBRARIES libz.a
+                ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/mac_x64
+                )
+    endif ()
 else ()
-    FIND_LIBRARY(ZLIB_LIBRARIES libz.a
+    find_library(MBEDTLS_LIBRARY libz.a
             ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/ubt22_x64
             )
 endif ()
