@@ -417,22 +417,22 @@ CHECK_FUNCTION_EXISTS(${VARIA}TLSv1_2_client_method LWS_HAVE_TLSV1_2_CLIENT_METH
 endif()
 
 # Generate self-signed SSL certs for the test-server.
-
-if (LWS_WITH_SSL AND NOT LWS_WITH_WOLFSSL)
-	message("Searching for OpenSSL executable and dlls")
-	find_package(OpenSSLbins)
-	if (DEFINED OPENSSL_EXECUTABLE)
-		message("OpenSSL executable: ${OPENSSL_EXECUTABLE}")
-		
-		if (OPENSSL_EXECUTABLE MATCHES "^$")
-			set(OPENSSL_EXECUTABLE openssl)
-		endif()
-	endif()
-	if (NOT DEFINED OPENSSL_EXECUTABLE)
-		set(OPENSSL_EXECUTABLE openssl)
-	endif()
-
-endif()
+#
+#if (LWS_WITH_SSL AND NOT LWS_WITH_WOLFSSL)
+#	message("Searching for OpenSSL executable and dlls")
+#	find_package(OpenSSLbins)
+#	if (DEFINED OPENSSL_EXECUTABLE)
+#		message("OpenSSL executable: ${OPENSSL_EXECUTABLE}")
+#
+#		if (OPENSSL_EXECUTABLE MATCHES "^$")
+#			set(OPENSSL_EXECUTABLE openssl)
+#		endif()
+#	endif()
+#	if (NOT DEFINED OPENSSL_EXECUTABLE)
+#		set(OPENSSL_EXECUTABLE openssl)
+#	endif()
+#
+#endif()
 
 set(GENCERTS 0)
 

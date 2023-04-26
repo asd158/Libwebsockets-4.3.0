@@ -23,9 +23,6 @@
 #
 
 cmake_minimum_required(VERSION 2.8.12)
-set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY BOTH)
-set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
-set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE BOTH)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(CheckIncludeFile)
@@ -33,7 +30,9 @@ include(CheckIncludeFiles)
 include(CheckLibraryExists)
 include(CheckTypeSize)
 include(CheckCSourceCompiles)
-
+if(APPLE)
+	set (XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Apple Development: le huang (WSJL265X98)")
+endif()
 if (POLICY CMP0048)
 	cmake_policy(SET CMP0048 NEW)
 endif()

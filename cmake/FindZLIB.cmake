@@ -7,34 +7,25 @@
 #
 # This currently works probably only for Linux
 
-FIND_PATH(ZLIB_INCLUDE_DIR zlib.h
-        ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/include
-        )
 if (WIN32)
-    SET(ZLIB_INCLUDE_DIR ${ZLIB_INCLUDE_DIR}/win)
-    FIND_LIBRARY(ZLIB_LIBRARIES zlibstatic.lib
-            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/win_x64/release
-            )
+    set(EXT_DIR win_x64/release)
 elseif (ANDROID)
-    FIND_LIBRARY(ZLIB_LIBRARIES libz.a
-            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/android/${ANDROID_ABI}
-            )
+    set(EXT_DIR android/${ANDROID_ABI})
 elseif (APPLE)
     if (IOS)
-        FIND_LIBRARY(ZLIB_LIBRARIES libz.a
-                ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/ios
-                )
+        set(EXT_DIR ios)
     else ()
-        FIND_LIBRARY(ZLIB_LIBRARIES libz.a
-                ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/android/mac_x64
-                )
+        set(EXT_DIR mac_x64)
     endif ()
 else ()
-    find_library(MBEDTLS_LIBRARY libz.a
-            ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/ubt22_x64
-            )
+    set(EXT_DIR ubt22_x64)
 endif ()
-set(ZLIB_INCLUDE_DIRS ${ZLIB_INCLUDE_DIR})
+set(ZLIB_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/include)
+set(ZLIB_LIBRARIES ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/${EXT_DIR}/libz.a)
+if (WIN32)
+    set(ZLIB_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/include/win)
+    set(ZLIB_LIBRARIES ${CMAKE_SOURCE_DIR}/3rd/zlib-1.2.13/_bin/lib/${EXT_DIR}/zlibstatic.lib)
+endif ()
 IF (ZLIB_LIBRARIES)
     SET(ZLIB_FOUND "YES")
 ENDIF (ZLIB_LIBRARIES)

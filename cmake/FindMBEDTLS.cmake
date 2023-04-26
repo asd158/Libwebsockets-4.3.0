@@ -6,62 +6,27 @@
 # ZLIB_FOUND, If false, do not try to use miniz
 #
 # This currently works probably only for Linux
-find_path(MBEDTLS_INCLUDE_DIRS mbedtls/ssl.h
-        ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/include
-        )
 if (WIN32)
-    find_library(MBEDTLS_LIBRARY mbedtls.lib
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/win_x64/release
-            )
-    MESSAGE(STATUS ${MBEDTLS_LIBRARY})
-    find_library(MBEDX509_LIBRARY mbedx509.lib
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/win_x64/release
-            )
-    find_library(MBEDCRYPTO_LIBRARY mbedcrypto.lib
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/win_x64/release
-            )
+    set(EXT_DIR win_x64/release)
 elseif (ANDROID)
-    find_library(MBEDTLS_LIBRARY mbedtls
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/android/${ANDROID_ABI}
-            )
-    find_library(MBEDX509_LIBRARY libmbedx509.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/android/${ANDROID_ABI}
-            )
-    find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/android/${ANDROID_ABI}
-            )
+    set(EXT_DIR android/${ANDROID_ABI})
 elseif (APPLE)
-    IF (IOS)
-        find_library(MBEDTLS_LIBRARY libmbedtls.a
-                ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios
-                )
-        find_library(MBEDX509_LIBRARY libmbedx509.a
-                ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios
-                )
-        find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-                ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios
-                )
+    if (IOS)
+        set(EXT_DIR ios)
     else ()
-        find_library(MBEDTLS_LIBRARY libmbedtls.a
-                ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/mac_x64
-                )
-        find_library(MBEDX509_LIBRARY libmbedx509.a
-                ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/mac_x64
-                )
-        find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-                ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/mac_x64
-                )
+        set(EXT_DIR mac_x64)
     endif ()
 else ()
-    find_library(MBEDTLS_LIBRARY libmbedtls.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ubt22_x64
-            )
-    find_library(MBEDX509_LIBRARY libmbedx509.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ubt22_x64
-            )
-    find_library(MBEDCRYPTO_LIBRARY libmbedcrypto.a
-            ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ubt22_x64
-            )
+    set(EXT_DIR ubt22_x64)
+endif ()
+set(MBEDTLS_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/include)
+set(MBEDTLS_LIBRARY ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios/${EXT_DIR}/libmbedtls.a)
+set(MBEDX509_LIBRARY ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios/${EXT_DIR}/libmbedx509.a)
+set(MBEDCRYPTO_LIBRARY ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios/${EXT_DIR}/libmbedcrypto.a)
+if (WIN32)
+    set(MBEDTLS_LIBRARY ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios/${EXT_DIR}/mbedtls.lib)
+    set(MBEDX509_LIBRARY ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios/${EXT_DIR}/mbedx509.lib)
+    set(MBEDCRYPTO_LIBRARY ${CMAKE_SOURCE_DIR}/3rd/mbedtls-3.4.0/_bin/lib/ios/${EXT_DIR}/mbedcrypto.lib)
 endif ()
 MARK_AS_ADVANCED(
         MBEDTLS_INCLUDE_DIRS
