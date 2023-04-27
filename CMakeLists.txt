@@ -226,7 +226,7 @@ option(LWS_SUPPRESS_DEPRECATED_API_WARNINGS "Turn off complaints about, eg, open
 option(LWS_WITH_ESP32 "Build for ESP32" OFF)
 option(LWS_PLAT_OPTEE "Build for OPTEE" OFF)
 option(LWS_PLAT_FREERTOS "Build for FreeRTOS" OFF)
-option(LWS_PLAT_ANDROID "Android flavour of unix platform" ON)
+option(LWS_PLAT_ANDROID "Android flavour of unix platform" OFF)
 
 #
 # Client / Server / Test Apps build control
@@ -254,7 +254,7 @@ option(LWS_WITH_LEJP "With the Lightweight JSON Parser" ON)
 option(LWS_WITH_CBOR "With the Lightweight LECP CBOR Parser" OFF)
 option(LWS_WITH_CBOR_FLOAT "Build floating point types if building CBOR LECP" ON)
 option(LWS_WITH_SQLITE3 "Require SQLITE3 support" OFF)
-option(LWS_WITH_STRUCT_JSON "Generic struct serialization to and from JSON" OFF)
+option(LWS_WITH_STRUCT_JSON "Generic struct serialization to and from JSON" ON)
 option(LWS_WITH_STRUCT_SQLITE3 "Generic struct serialization to and from SQLITE3" OFF)
 # broken atm
 #option(LWS_WITH_SMTP "Provide SMTP support" OFF)
