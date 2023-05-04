@@ -4,3 +4,6 @@
 [submodule "3rd/mbedtls-3.4.0"]
 	path = 3rd/mbedtls-3.4.0
 	url = https://github.com/asd158/mbedtls-3.4.0
+[submodule "3rd/wolfssl-5.6.0-stable"]
+	path = 3rd/wolfssl-5.6.0-stable
+	url = https://github.com/asd158/wolfssl-5.6.0-stable.git
