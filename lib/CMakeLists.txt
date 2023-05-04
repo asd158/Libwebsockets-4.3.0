@@ -174,9 +174,9 @@ if (LWS_WITH_STATIC)
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>
 	)
-	target_include_directories(websockets PRIVATE ${LWS_LIB_BUILD_INC_PATHS})
+	target_include_directories(websockets PRIVATE ${LWS_LIB_BUILD_INC_PATHS} ${LWS_PUBLIC_INCLUDES})
 	target_compile_definitions(websockets PRIVATE LWS_BUILDING_STATIC)
-	target_include_directories(websockets PUBLIC ${LWS_PUBLIC_INCLUDES})
+#	target_include_directories(websockets PUBLIC ${LWS_PUBLIC_INCLUDES})
 	set(LWS_PUBLIC_INCLUDES ${LWS_PUBLIC_INCLUDES} PARENT_SCOPE)
 
 	if (WIN32)
@@ -202,9 +202,9 @@ if (LWS_WITH_SHARED)
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>
 	)
-	target_include_directories(websockets_shared PRIVATE ${LWS_LIB_BUILD_INC_PATHS})
+	target_include_directories(websockets_shared PRIVATE ${LWS_LIB_BUILD_INC_PATHS} ${LWS_PUBLIC_INCLUDES})
 	target_compile_definitions(websockets_shared PRIVATE LWS_BUILDING_SHARED)
-	target_include_directories(websockets_shared PUBLIC ${LWS_PUBLIC_INCLUDES})
+#	target_include_directories(websockets_shared PUBLIC ${LWS_PUBLIC_INCLUDES})
 	set(LWS_PUBLIC_INCLUDES ${LWS_PUBLIC_INCLUDES} PARENT_SCOPE)
 
 	# We want the shared lib to be named "libwebsockets"
