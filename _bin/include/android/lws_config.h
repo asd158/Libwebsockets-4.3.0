@@ -10,7 +10,7 @@
 #define LWS_INSTALL_LIBDIR "C:/Program Files (x86)/libwebsockets/lib"
 #define LWS_LIBRARY_VERSION_MAJOR 4
 #define LWS_LIBRARY_VERSION_MINOR 3
-#define LWS_LIBRARY_VERSION_PATCH_ELABORATED 2-3a5c4dc
+#define LWS_LIBRARY_VERSION_PATCH_ELABORATED 2-54a6b8c
 #define LWS_LIBRARY_VERSION_PATCH 2
 
 /* LWS_LIBRARY_VERSION_NUMBER looks like 1005001 for e.g. version 1.5.1 */
@@ -25,7 +25,7 @@
 /* #undef LWS_EXT_PTHREAD_LIBRARIES */
 
 /* #undef LWS_AVOID_SIGPIPE_IGN */
-#define LWS_BUILD_HASH "3a5c4dc"
+#define LWS_BUILD_HASH "54a6b8c"
 #define LWS_BUILTIN_GETIFADDRS
 #define LWS_CLIENT_HTTP_PROXYING
 /* #undef LWS_DETECTED_PLAT_IOS */
@@ -110,7 +110,7 @@
 #define LWS_HAVE_VFORK
 /* #undef LWS_HAVE_X509_get_key_usage */
 /* #undef LWS_HAVE_X509_VERIFY_PARAM_set1_host */
-#define LWS_LIBRARY_VERSION "4.3.2-3a5c4dc"
+#define LWS_LIBRARY_VERSION "4.3.2-54a6b8c"
 #define LWS_LOGGING_BITFIELD_CLEAR 0
 #define LWS_LOGGING_BITFIELD_SET 0
 #define LWS_LOG_TAG_LIFECYCLE
@@ -172,8 +172,8 @@
 #define LWS_WITH_IPV6
 /* #undef LWS_WITH_JOSE */
 /* #undef LWS_WITH_CBOR */
-#define LWS_WITH_CBOR_FLOAT
-#define LWS_WITH_LEJP
+/* #undef LWS_WITH_CBOR_FLOAT */
+/* #undef LWS_WITH_LEJP */
 /* #undef LWS_WITH_LIBEV */
 /* #undef LWS_WITH_LIBEVENT */
 /* #undef LWS_WITH_LIBUV */
@@ -208,7 +208,7 @@
 /* #undef LWS_WITH_SELFTESTS */
 /* #undef LWS_WITH_SEQUENCER */
 /* #undef LWS_WITH_SERVER_STATUS */
-#define LWS_WITH_SYS_SMD
+/* #undef LWS_WITH_SYS_SMD */
 /* #undef LWS_WITH_SMTP */
 /* #undef LWS_WITH_SOCKS5 */
 /* #undef LWS_WITH_STATEFUL_URLDECODE */
@@ -221,7 +221,7 @@
 /* #undef LWS_WITH_SYS_FAULT_INJECTION */
 /* #undef LWS_WITH_SYS_METRICS */
 /* #undef LWS_WITH_SYS_NTPCLIENT */
-#define LWS_WITH_SYS_STATE
+/* #undef LWS_WITH_SYS_STATE */
 /* #undef LWS_WITH_THREADPOOL */
 #define LWS_WITH_TLS
 /* #undef LWS_WITH_TLS_JIT_TRUST */
